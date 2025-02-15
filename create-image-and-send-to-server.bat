@@ -26,6 +26,10 @@ if not exist "%PROJECT_DIR%" (
 
 REM Obter o nome da pasta como IMAGE_NAME
 for %%i in ("%PROJECT_DIR%") do set IMAGE_NAME=%%~ni
+
+REM Converter o nome da imagem para minúsculas
+for /f %%a in ('powershell -Command "$('%IMAGE_NAME%'.ToLower())"') do set IMAGE_NAME=%%a
+
 set TAR_FILE=%IMAGE_NAME%.tar
 
 REM Configurações do Servidor
