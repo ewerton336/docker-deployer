@@ -24,7 +24,7 @@ echo ========================================
 REM Conectando ao servidor via SSH e executando os comandos
 ssh root@%SERVER_IP% ^
 "docker ps && ^
-docker stop %CONTAINER_NAME% && docker rm %CONTAINER_NAME% && ^
+docker stop %CONTAINER_NAME% && docker rm %CONTAINER_NAME% -f && ^
 docker rmi %IMAGE_NAME% && ^
 cd ~/docker && docker load -i %IMAGE_NAME%.tar && ^
 docker run -d -p %CONTAINER_PORT%:3000 --name %CONTAINER_NAME% %IMAGE_NAME%"
